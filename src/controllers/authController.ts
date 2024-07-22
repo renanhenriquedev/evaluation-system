@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'your-secret-key'; 
+const secretKey = 'key'; 
 
 export const login = (req: Request, res: Response) => {
   const { username, password } = req.body;

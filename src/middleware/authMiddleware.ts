@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'your-secret-key'; 
+const secretKey = 'key'; 
 
 export interface AuthRequest extends Request {
   user?: string | object; 

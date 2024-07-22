@@ -1,6 +1,5 @@
 import { MongoClient, Db } from 'mongodb';
 
-// Troque para a rota do seu banco
 const url = 'mongodb://localhost:27018';
 const dbName = 'avaliacoes';
 

@@ -3,7 +3,6 @@ import { ObjectId } from 'mongodb';
 import { getDb } from '../services/database';
 import { Review } from '../models/Review';
 
-// Cria uma nova avaliação
 export const createReview = async (req: Request, res: Response) => {
   try {
     const { userId, rating, comment } = req.body;
@@ -29,7 +28,6 @@ export const createReview = async (req: Request, res: Response) => {
   }
 };
 
-// Obtém todas as avaliações
 export const getReviews = async (req: Request, res: Response) => {
   try {
     const db = getDb();
@@ -41,7 +39,6 @@ export const getReviews = async (req: Request, res: Response) => {
   }
 };
 
-// Obtém uma avaliação por ID
 export const getReviewById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -59,7 +56,6 @@ export const getReviewById = async (req: Request, res: Response) => {
   }
 };
 
-// Edita uma avaliação existente
 export const updateReview = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -82,7 +78,6 @@ export const updateReview = async (req: Request, res: Response) => {
   }
 };
 
-// Exclui uma avaliação
 export const deleteReview = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;

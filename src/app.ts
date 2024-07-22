@@ -35,7 +35,6 @@ initDb()
   .then(() => {
     console.log('Connected to MongoDB');
 
-    // Use as rotas após a conexão com o banco de dados
     app.use('/reviews', reviewRoutes);
     app.use('/users', userRoutes);
     app.use('/auth', authRoutes);
