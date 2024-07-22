@@ -1,8 +1,6 @@
-// src/routes/reviewRoutes.ts
 import express from 'express';
-import { createReview, getReviews } from '../controllers/reviewController';
+import { createReview, getReviews, getReviewById, updateReview, deleteReview } from '../controllers/reviewController';
 import { authenticateToken } from '../middleware/authMiddleware';
-
 
 const router = express.Router();
 
@@ -81,5 +79,88 @@ router.post('/', authenticateToken, createReview);
  *         description: Erro ao obter as avaliações
  */
 router.get('/', authenticateToken, getReviews);
+
+/**
+ * @swagger
+ * /reviews/{id}:
+ *   get:
+ *     summary: Retorna uma avaliação pelo ID
+ *     tags: [Reviews]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID da avaliação
+ *     responses:
+ *       200:
+ *         description: Avaliação encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Review'
+ *       404:
+ *         description: Avaliação não encontrada
+ *       500:
+ *         description: Erro ao obter a avaliação
+ */
+router.get('/:id', authenticateToken, getReviewById);
+
+/**
+ * @swagger
+ * /reviews/{id}:
+ *   put:
+ *     summary: Atualiza uma avaliação pelo ID
+ *     tags: [Reviews]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID da avaliação
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Review'
+ *     responses:
+ *       200:
+ *         description: Avaliação atualizada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Review'
+ *       404:
+ *         description: Avaliação não encontrada
+ *       500:
+ *         description: Erro ao atualizar a avaliação
+ */
+router.put('/:id', authenticateToken, updateReview);
+
+/**
+ * @swagger
+ * /reviews/{id}:
+ *   delete:
+ *     summary: Exclui uma avaliação pelo ID
+ *     tags: [Reviews]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID da avaliação
+ *     responses:
+ *       200:
+ *         description: Avaliação excluída com sucesso
+ *       404:
+ *         description: Avaliação não encontrada
+ *       500:
+ *         description: Erro ao excluir a avaliação
+ */
+router.delete('/:id', authenticateToken, deleteReview);
 
 export default router;

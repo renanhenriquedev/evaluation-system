@@ -1,8 +1,5 @@
 # evaluation-system
 
-
->Projeto Indivual
-
 # Tecnologias
 
 - Node
