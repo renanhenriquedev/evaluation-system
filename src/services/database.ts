@@ -1,4 +1,3 @@
-// src/services/database.ts
 import { MongoClient, Db } from 'mongodb';
 
 // Troque para a rota do seu banco

@@ -9,10 +9,8 @@ import { initDb } from './services/database';
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para tratar JSON
 app.use(express.json());
 
-// Configuração do Swagger
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.0',
@@ -27,13 +25,12 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./src/routes/*.ts', './src/models/*.ts'], // Caminhos para os arquivos de rotas e modelos
+  apis: ['./src/routes/*.ts', './src/models/*.ts'],
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Inicialização do banco de dados
 initDb()
   .then(() => {
     console.log('Connected to MongoDB');

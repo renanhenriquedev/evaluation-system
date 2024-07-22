@@ -1,4 +1,3 @@
-// src/services/reviewService.ts
 import { MongoClient, Db } from 'mongodb';
 
 let _db: Db;
